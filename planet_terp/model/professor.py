@@ -90,7 +90,26 @@ class Professor(
             
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
-            average_rating = schemas.NumberSchema
+            
+            
+            class average_rating(
+                schemas.NumberBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, decimal.Decimal, int, float, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'average_rating':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "name": name,
                 "slug": slug,
@@ -155,7 +174,7 @@ class Professor(
         *_args: typing.Union[dict, frozendict.frozendict, ],
         courses: typing.Union[MetaOapg.properties.courses, list, tuple, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
-        average_rating: typing.Union[MetaOapg.properties.average_rating, decimal.Decimal, int, float, ],
+        average_rating: typing.Union[MetaOapg.properties.average_rating, None, decimal.Decimal, int, float, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         slug: typing.Union[MetaOapg.properties.slug, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,

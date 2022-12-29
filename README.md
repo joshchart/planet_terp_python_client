@@ -237,3 +237,12 @@ import planet_terp
 from planet_terp.apis import *
 from planet_terp.models import *
 ```
+
+# Recreating client
+
+```bash
+docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+    -i /local/openapi.yaml \
+    -g python \
+    -o /local/ --package-name planet_terp
+```

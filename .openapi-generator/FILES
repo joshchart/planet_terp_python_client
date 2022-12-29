@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/CoursesApi.md
@@ -39,8 +38,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_course.py
-test/test_models/test_grades.py
-test/test_models/test_professor.py
-test/test_models/test_search_result.py
 tox.ini
